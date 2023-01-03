@@ -19,6 +19,7 @@ queen must be placed on the chessboard.
 """
 import sys
 
+
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
@@ -44,10 +45,10 @@ def get_solution(board):
 
 def xout(board, row, col):
     """X out spots on a chessboard.
-    
+
     All spots where non-attacking queens can no
     longer be played are X-ed out.
-    
+
     Args:
         board (list): The current working chessboard.
         row (int): The row where a queen was last played.
@@ -109,7 +110,7 @@ def recursive_solve(board, row, queens, solutions):
         solutions.append(get_solution(board))
         return (solutions)
 
-    for c in range(len(board)):  
+    for c in range(len(board)):
         if board[row][c] == " ":
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = "Q"
@@ -129,7 +130,7 @@ if __name__ == "__main__":
     if int(sys.argv[1]) < 4:
         print("N must be at least 4")
         sys.exit(1)
-            
+
     board = init_board(int(sys.argv[1]))
     solutions = recursive_solve(board, 0, 0, [])
     for sol in solutions:
